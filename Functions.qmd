@@ -5,6 +5,13 @@ format: html
 editor: visual
 ---
 
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+library(palmerpenguins)
+```
+
 ## Functions
 
 ### Functions with conditions
@@ -96,4 +103,69 @@ convert_kelvin <- function(system, temp_k){
 #convert_kelvin("metric", 273.15)
 
 convert_kelvin("french", 273.15)
+```
+
+## Functions with for loops
+
+### Nested for loop
+
+```{r}
+
+apples <- c(1, 2, 3, 4)
+price <- c(7, 10, 25)
+
+fruit_out <- matrix(nrow = length(price), ncol = length(apples))
+
+for (i in seq_along(apples)){
+  for(j in seq_along(price)){
+    total_cost <- price[j] * apples[i]
+    fruit_out[j,i] <- total_cost
+  }
+}
+
+# expected matrix output
+# for each column calculate all row elements before moving on to the next column
+#  7 14 21 28
+# 10 20 30 40
+# 25 50 75 100
+
+fruit_out
+```
+
+Create a subset with a function, and then return something based on that subset.
+
+```{r}
+
+dog_choice <- (data.frame(dog_name = c("Khora", "Teddy", "Waffle", "Banjo", "Tallie"), food = c("everything", "salmon", "pancakes", "chicken", "enchiladas")))
+
+```
+
+```{r}
+dog_menu <- function(dog_name_arg){
+  dog_details <- filter(dog_choice, dog_name == dog_name_arg) 
+  print(paste("My name is", dog_details$dog_name, "and my favorite food is", dog_details$food))
+}
+```
+
+```{r}
+dog_menu(dog_name_arg = "Teddy")
+```
+
+### Function with a for loop
+
+```{r}
+# Create a function that calculates a mean value of a given column with numeric values
+
+df_means <- function(df){
+  for (i in seq_along(df)){
+    col_mean <- mean(df[[i]], na.rm = TRUE)
+    # colnames returns a name of column for a given postion
+    col_name <- colnames(df[i])
+    print(paste("The mean value of", col_name, "is", col_mean))
+  }
+}
+```
+
+```{r}
+df_means(df = faithful)
 ```
