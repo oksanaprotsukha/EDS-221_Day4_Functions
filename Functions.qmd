@@ -16,11 +16,14 @@ animal_age <- function(animal, age){
     print(paste("Your", animal, "age is", age*7))
   }
   else if(animal == "goat") {
-    print(paste("Your", animal, "age is", age*4.5))
+    print(paste("Your", animal, "age is", age*4.7))
   }
+  else print(paste0("Oops, I don't have a function to calculate the age of a ", animal, ". Enter dog or goat"))
 }
 animal_age("goat", 14)
 animal_age("dog", 14)
+
+animal_age("whale", 10)
 ```
 
 ```{r}
@@ -69,4 +72,28 @@ display_age_origin <- function(age_yr, birth_town){
 }
 
 display_age_origin(age_yr = 10, birth_town = "Sydney")
+```
+
+Write a function that, given temperature in Kelvin, if a user selects "metric" to the scale then return degrees Celsius, or if they select "english" then returns degrees in Fahrenheit.
+
+**K = C + 273.15** (or) C = K -- 273.15
+
+**°F = (K − 273.15) × 1.8 + 32** or °F = (K − 273.15) × 9/5 + 32.
+
+```{r}
+convert_kelvin <- function(system, temp_k){
+  if(system == "metric"){
+    return(temp_k - 273.15)
+  }
+  else if(system == "english"){
+    return((temp_k - 273.15) * (9/5) + 32)
+  }
+  else(return("Please, enter a valid units system: metric or english."))
+}
+ 
+#convert_kelvin("english", 273.15)
+
+#convert_kelvin("metric", 273.15)
+
+convert_kelvin("french", 273.15)
 ```
