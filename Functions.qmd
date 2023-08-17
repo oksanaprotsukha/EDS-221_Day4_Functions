@@ -1,0 +1,24 @@
+---
+title: "Functions"
+author: "OP"
+format: html
+editor: visual
+---
+
+## Functions
+
+### Functions with conditions
+
+```{r}
+
+animal_age <- function(animal, age){
+  if(animal == "dog") {
+    print(paste("Your", animal, "age is", age*7))
+  }
+  else if(animal == "goat") {
+    print(paste("Your", animal, "age is", age*4.5))
+  }
+}
+animal_age("goat", 14)
+animal_age("dog", 14)
+```
