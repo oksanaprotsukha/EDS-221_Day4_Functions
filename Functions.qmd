@@ -22,3 +22,51 @@ animal_age <- function(animal, age){
 animal_age("goat", 14)
 animal_age("dog", 14)
 ```
+
+```{r}
+# function that doubles a value
+
+double_value <- function(my_dollars){
+  print(2 * my_dollars)
+}
+
+# name of the argument is not required since there is only one argument
+double_value(10)
+
+double_value(my_dollars = 10.13)
+
+# expect an error
+double_value(my_dollars = "butterfly") 
+```
+
+Create a function that returns an awesome restaurant name given a cool animal and your favorite food
+
+```{r}
+name_restaurant<- function(animal, food){
+  print(paste0(animal,food))
+}
+
+name_restaurant(animal = "hawk", food = "pizza")
+```
+
+Given temperature in degrees Fahrenheit, write a function that converts it to Celsius
+
+`Temperature in (°C) = (Temperature in (°F) - 32) * 5/9`
+
+```{r}
+convert_fahrenheit_to_celsius <- function(temp_f){
+  return((temp_f-32)*(5/9))
+}
+
+convert_fahrenheit_to_celsius(temp_f = 75)
+```
+
+Create a function that given inputs age and hometown, returns "I am \_\_years old, and I'm from \_\_"
+
+```{r}
+display_age_origin <- function(age_yr, birth_town){
+  print(paste("I am", age_yr,"years old and I am from", birth_town))
+}
+
+display_age_origin(age_yr = 10, birth_town = "Sydney")
+```
